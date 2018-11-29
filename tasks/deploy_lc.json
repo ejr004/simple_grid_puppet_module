@@ -1,0 +1,7 @@
+{
+  "description": "Deploy the SIMPLE Framework in each Lightwheight Component sorted by execution_id",
+  
+  "implementations": [
+    {"name": "deploy_lc.rb"}
+  ]
+}
