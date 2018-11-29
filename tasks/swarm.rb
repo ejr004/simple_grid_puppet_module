@@ -60,7 +60,7 @@ def get_element_ip(site_level_config_file_path, element)
         lightweight_components = data["lightweight_components"]
         lightweight_components.each do |lc|
                 if lc["type"] == element then
-                      nodes << lc["nodes"]
+                      nodes << lc["deploy"]
                       nodes.each do |node_array|
                         node_array.each do |value|
                         site_infrastructure.each do |site_infra|
