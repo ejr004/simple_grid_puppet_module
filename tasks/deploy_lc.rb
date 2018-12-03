@@ -56,4 +56,5 @@ begin
 
 elements = get_element_ip(site_level_config_file_path)
 puts elements
+exec_puppet_agent(elements)
 end

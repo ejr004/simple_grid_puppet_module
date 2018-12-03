@@ -27,3 +27,6 @@ hierarchy:
 
   - name: "nodes::config_master"
     path: "nodes/config_master.yaml"
+
+  - name: "deploy::lightweight_component"
+    path: "deploy/lightweight_component.yaml"
