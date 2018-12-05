@@ -6,21 +6,16 @@ site_level_config_file_path = "/Users/gongolo/dev/puppet/simple_grid_puppet_dev_
 def get_lifecycle_scripts(site_level_config_file_path)
         simple_grid_site_script_dir = "/etc/simple_grid/scripts/"
         lightweight_components = Hash.new
-        newhash = Hash.new
-        lc_hook = Hash.new
-        lc_array = Array.new
+        exec_id = Hash.new
         data = YAML.load_file(site_level_config_file_path)
         lightweight_components = data["lightweight_components"]
-        lightweight_components.each do |lc|
-                #puts "/etc/simple_grid/scripts/"+lc["execution_id"]
-                exec_id = lc["execution_id"]
-                lc_hook = lc["lifecycle_hooks"]
-                lc_hook.each do | key,value| 
-                        puts "mkdir -p "+"#{simple_grid_site_script_dir}"+"#{exec_id}/"+"#{key}"
-                end
+        lightweight_components.each do |key, lc|
+                #exec_id = {key["execution_id"]=>key["lifecycle_hooks"]}
+                exec_id.store(key["execution_id"],key["lifecycle_hooks"])
+                #puts exec_id.inspect
         end
+        return exec_id
 end
 begin
-get_lifecycle_scripts(site_level_config_file_path)
-
+puts get_lifecycle_scripts(site_level_config_file_path)
 end
