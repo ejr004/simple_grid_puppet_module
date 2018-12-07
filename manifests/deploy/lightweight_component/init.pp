@@ -5,6 +5,7 @@ class simple_grid::deploy::lightweight_component::init(
   include 'simple_grid::ccm_function::create_config_dir'
   include 'simple_grid::ccm_function::create_script_dir'
   include 'simple_grid::ccm_function::copy_compiled_config'
+  include 'simple_grid::ccm_function::download_component'
   #include 'simple_grid::ccm_function::copy_script_dir'
   #Copy compiled config to LC
   #class{ 'simple_grid::ccm_function::copy':
