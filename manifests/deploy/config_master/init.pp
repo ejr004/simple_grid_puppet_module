@@ -1,7 +1,6 @@
 class simple_grid::deploy::config_master::init {
   notify{'STAGE: Deploy on Config Master': }
-
-  #class{'simple_grid::ccm_function::config_master::copydir':}
+  class {'simple_grid::ccm_function::aggregate_repository_lifecycle_scripts':}
 
   notify{'Starting STAGE: Deploy on Lightweight Components': }
   exec{"swarm init for LC":
@@ -9,4 +8,5 @@ class simple_grid::deploy::config_master::init {
                   path    => '/usr/local/bin/:/usr/bin/:/bin/:/opt/puppetlabs/bin/',
                   user    => 'root',
                   }
+
 }

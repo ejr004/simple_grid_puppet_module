@@ -1,6 +1,6 @@
 class simple_grid::deploy::lightweight_component::init(
 ){
-  notify {"STAGE: Deploy on LC in $hostname":} 
+  notify {"STAGE: Deploy on LC in $hostname":}
   # Create config dir
   include 'simple_grid::ccm_function::create_config_dir'
   include 'simple_grid::ccm_function::create_script_dir'
