@@ -1,16 +1,14 @@
-class simple_grid::ccm_function::aggregate_repository_lifecycle_scripts(
-$site_level_config_file = '/etc/simple_grid/simple_grid_site_config/site-level-configuration-file.yaml', #TODO
-$simple_grid_scripts_dir = '/etc/simple_grid/scripts'
+class simple_grid::ccm_function::exec_repo_lifecycle_hook(
+$site_level_config_file = '/etc/simple_grid/simple_grid_site_config/site-level-configuration-file.yaml' #TODO
 ){
-notify {'Creating and copying script structure':}
-  file{"${simple_grid_scripts_dir}/":
-    ensure => directory,
-    mode   => '0777',
-    owner  =>  root,
-    group  =>  root,
-    }
+notify {"Executing Repo lifecycle hooks for $::{hostname}":}
+
 $scripts_hash = simple_grid::aggregate_repository_lifecycle_scripts("${site_level_config_file}")
 #notify {"XXXX ${scripts_hash}":} 
+
+# Need to receive $exec_id
+
+/*
   $scripts_hash.each |Integer $exec_id, Hash $lc_scripts|{
       file{"${simple_grid_scripts_dir}/${exec_id}/":
         ensure => directory,
@@ -28,6 +26,7 @@ $scripts_hash = simple_grid::aggregate_repository_lifecycle_scripts("${site_leve
         $script.each |String $script_str|{
           $file = split($script_str, '/')
           notify{" ${file[-1]} ": }
+
           file{"${simple_grid_scripts_dir}/${exec_id}/${stage}/${file[-1]}":
             ensure => directory,
             mode   => '0777',
@@ -38,5 +37,5 @@ $scripts_hash = simple_grid::aggregate_repository_lifecycle_scripts("${site_leve
           }
         }
       }
-  }
+  }*/
 }

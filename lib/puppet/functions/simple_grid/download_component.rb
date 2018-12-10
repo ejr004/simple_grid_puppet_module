@@ -8,7 +8,7 @@ Puppet::Functions.create_function(:'simple_grid::download_component') do
                 component = Hash.new
                 data = YAML.load_file(site_level_config_file_path)
                 lightweight_components = data["lightweight_components"]
-                lightweight_components.each do |key, lc|
+                lightweight_components.each do |key|
                         component.store(key["repository_url"],key["deploy"])
                         #puts exec_id.inspect
                 end
